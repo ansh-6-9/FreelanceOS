@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreelanceOS – Finances</title>
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo">FreelanceOS</h1>
+    <nav class="nav">
+      <a href="index.html">Dashboard</a>
+      <a href="productivity.html">Productivity</a>
+      <a href="finance.html" class="active">Finances</a>
+      <a href="portfolio.html">Portfolio</a>
+    </nav>
+    <button id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+  </header>
+
+  <main>
+    <section id="earnings-calc" class="card">
+      <h2>Earnings Calculator</h2>
+      <form id="earningsForm">
+        <input type="text" id="clientName" placeholder="Client / Project" required />
+        <input type="number" id="hourlyRate" placeholder="Hourly Rate ($)" required />
+        <input type="number" id="hoursWorked" placeholder="Hours Worked" required />
+        <button type="submit">Calculate</button>
+      </form>
+      <p id="calcResult"></p>
+    </section>
+
+    <section id="income-tracker" class="card">
+      <h2>Monthly Income Tracker</h2>
+      <table id="incomeTable">
+        <thead>
+          <tr><th>Month</th><th>Total ($)</th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
+
+    <section id="expense-tracker" class="card">
+      <h2>Expense Tracker</h2>
+      <form id="expenseForm">
+        <input type="text" id="expenseTitle" placeholder="Description" required />
+        <input type="number" id="expenseAmount" placeholder="Amount ($)" required />
+        <input type="date" id="expenseDate" required />
+        <button type="submit">Add Expense</button>
+      </form>
+      <ul id="expenseList" class="expense-list"></ul>
+      <h3>Summary</h3>
+      <div id="expenseChart" class="expense-chart"></div>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; <span id="year"></span> FreelanceOS</small>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/finance.js"></script>
+</body>
+</html>
