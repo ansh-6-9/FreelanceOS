@@ -41,13 +41,17 @@ class Navigation {
                         break;
                     case '2':
                         e.preventDefault();
-                        this.navigateToSection('productivity');
+                        this.navigateToSection('payments');
                         break;
                     case '3':
                         e.preventDefault();
-                        this.navigateToSection('finances');
+                        this.navigateToSection('productivity');
                         break;
                     case '4':
+                        e.preventDefault();
+                        this.navigateToSection('finances');
+                        break;
+                    case '5':
                         e.preventDefault();
                         this.navigateToSection('portfolio');
                         break;
@@ -58,7 +62,7 @@ class Navigation {
 
     handleInitialRoute() {
         const hash = window.location.hash.slice(1);
-        const validSections = ['dashboard', 'productivity', 'finances', 'portfolio'];
+        const validSections = ['dashboard', 'payments', 'productivity', 'finances', 'portfolio'];
         
         if (hash && validSections.includes(hash)) {
             this.navigateToSection(hash, false);
@@ -117,6 +121,12 @@ class Navigation {
             case 'dashboard':
                 if (window.dashboard) {
                     window.dashboard.refresh();
+                }
+                break;
+            case 'payments':
+                if (window.paymentTracker) {
+                    window.paymentTracker.renderPaymentsTable();
+                    window.paymentTracker.updateSummary();
                 }
                 break;
             case 'productivity':

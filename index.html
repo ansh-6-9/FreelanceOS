@@ -141,6 +141,7 @@
         <nav class="navigation">
             <ul class="nav-list">
                 <li><a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a></li>
+                <li><a href="#payments" class="nav-link" data-section="payments">Track Payments</a></li>
                 <li><a href="#productivity" class="nav-link" data-section="productivity">Productivity</a></li>
                 <li><a href="#finances" class="nav-link" data-section="finances">Finances</a></li>
                 <li><a href="#portfolio" class="nav-link" data-section="portfolio">Portfolio</a></li>
@@ -180,6 +181,104 @@
                                 <span class="quick-link-icon">📁</span>
                                 <span>Portfolio</span>
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Payments Section -->
+            <section id="payments" class="section">
+                <div class="payments-grid">
+                    <!-- Integration UI -->
+                    <div class="card integration-card">
+                        <h3>Platform Integrations</h3>
+                        <p class="integration-description">Connect your freelance platforms to automatically sync payments</p>
+                        <div class="integration-buttons">
+                            <button class="btn btn-integration fiverr-btn" data-platform="fiverr">
+                                <span class="integration-icon">🟢</span>
+                                Connect with Fiverr
+                            </button>
+                            <button class="btn btn-integration upwork-btn" data-platform="upwork">
+                                <span class="integration-icon">🔵</span>
+                                Connect with Upwork
+                            </button>
+                            <button class="btn btn-integration freelancer-btn" data-platform="freelancer">
+                                <span class="integration-icon">🟠</span>
+                                Connect with Freelancer
+                            </button>
+                        </div>
+                        <div class="integration-status">
+                            <p class="status-note">Note: These integrations are coming soon! For now, use the manual tracker below.</p>
+                        </div>
+                    </div>
+
+                    <!-- Manual Payment Tracker -->
+                    <div class="card payment-tracker-card">
+                        <h3>Manual Payment Tracker</h3>
+                        <form id="payment-form" class="payment-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="client-name-payment">Client Name</label>
+                                    <input type="text" id="client-name-payment" placeholder="Enter client name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="payment-amount">Payment Amount ($)</label>
+                                    <input type="number" id="payment-amount" placeholder="0.00" step="0.01" min="0" required>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="payment-date">Date & Time</label>
+                                    <input type="datetime-local" id="payment-date" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="payment-notes">Notes / Description</label>
+                                    <input type="text" id="payment-notes" placeholder="Payment description or notes">
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary save-payment-btn">Save Payment</button>
+                        </form>
+                    </div>
+
+                    <!-- Payment History -->
+                    <div class="card payment-history-card">
+                        <h3>Payment History</h3>
+                        <div class="payment-filters">
+                            <div class="filter-group">
+                                <input type="text" id="filter-client" placeholder="Filter by client name">
+                                <input type="date" id="filter-date" placeholder="Filter by date">
+                                <button id="clear-filters" class="btn btn-secondary btn-sm">Clear Filters</button>
+                            </div>
+                        </div>
+                        <div class="payment-summary">
+                            <div class="summary-stats">
+                                <div class="stat-item">
+                                    <span class="stat-label">Total Payments:</span>
+                                    <span id="total-payments-count" class="stat-value">0</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-label">Total Amount:</span>
+                                    <span id="total-payments-amount" class="stat-value">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-table-container">
+                            <table id="payments-table" class="payments-table">
+                                <thead>
+                                    <tr>
+                                        <th>Client</th>
+                                        <th>Amount</th>
+                                        <th>Date</th>
+                                        <th>Notes</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="payments-table-body">
+                                    <tr class="no-payments">
+                                        <td colspan="5">No payments recorded yet. Add your first payment above!</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -408,6 +507,7 @@
     <script src="js/notepad.js"></script>
     <script src="js/earnings.js"></script>
     <script src="js/expenses.js"></script>
+    <script src="js/payments.js"></script>
     <script src="js/portfolio.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/app.js"></script>
