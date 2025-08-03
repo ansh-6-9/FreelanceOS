@@ -1,0 +1,42 @@
+{
+  "name": "freelanceos",
+  "version": "1.0.0",
+  "description": "A comprehensive web application for freelancers to manage their entire workflow",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 -m http.server 8000",
+    "dev": "python3 -m http.server 8000",
+    "serve": "python3 -m http.server 8000"
+  },
+  "keywords": [
+    "freelance",
+    "productivity",
+    "task-management",
+    "pomodoro",
+    "finance-tracker",
+    "portfolio",
+    "vanilla-javascript",
+    "html5",
+    "css3"
+  ],
+  "author": "FreelanceOS Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/freelanceos.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/freelanceos/issues"
+  },
+  "homepage": "https://github.com/yourusername/freelanceos#readme",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
