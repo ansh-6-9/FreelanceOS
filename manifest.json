@@ -1,0 +1,46 @@
+{
+    "name": "FreelanceOS - Complete Freelance Workspace",
+    "short_name": "FreelanceOS",
+    "description": "All-in-one freelance workspace with productivity tools, finance management, and portfolio features",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": ["productivity", "business", "finance"],
+    "icons": [
+        {
+            "src": "assets/icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/icon-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "assets/screenshot-desktop.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide"
+        },
+        {
+            "src": "assets/screenshot-mobile.png",
+            "sizes": "390x844",
+            "type": "image/png",
+            "form_factor": "narrow"
+        }
+    ]
+}
