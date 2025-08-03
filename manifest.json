@@ -1,0 +1,101 @@
+{
+  "name": "FreelanceOS - Complete Freelance Workspace",
+  "short_name": "FreelanceOS",
+  "description": "All-in-one freelance workspace with productivity tools, finance management, and portfolio features",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#6366f1",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["productivity", "business", "finance"],
+  "icons": [
+    {
+      "src": "assets/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "maskable any"
+    },
+    {
+      "src": "assets/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Pomodoro Timer",
+      "short_name": "Timer",
+      "description": "Start a Pomodoro session",
+      "url": "/#productivity",
+      "icons": [
+        {
+          "src": "assets/timer-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Task Manager",
+      "short_name": "Tasks",
+      "description": "Manage your daily tasks",
+      "url": "/#productivity",
+      "icons": [
+        {
+          "src": "assets/task-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Income Tracker",
+      "short_name": "Income",
+      "description": "Track your earnings",
+      "url": "/#finances",
+      "icons": [
+        {
+          "src": "assets/income-icon.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}
