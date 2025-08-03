@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FreelanceOS - Your Freelance Workflow Hub</title>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Splash Loader -->
+    <div id="splash-loader" class="splash-loader">
+        <div class="splash-content">
+            <div class="splash-logo">
+                <svg viewBox="0 0 100 100" class="logo-svg">
+                    <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2" fill="none"/>
+                    <path d="M30 40 L50 60 L70 40" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h2>FreelanceOS</h2>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Modal -->
+    <div id="auth-modal" class="auth-modal hidden">
+        <div class="auth-content">
+            <h2>Enter Passcode</h2>
+            <input type="password" id="passcode-input" placeholder="Enter your passcode">
+            <button id="auth-submit">Enter</button>
+            <p class="auth-hint">First time? Any passcode will create your account.</p>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app" class="app hidden">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg viewBox="0 0 100 100" class="logo-svg">
+                        <circle cx="50" cy="50" r="45" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M30 40 L50 60 L70 40" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>FreelanceOS</span>
+                </div>
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="dashboard">Dashboard</button>
+                    <button class="nav-btn" data-section="productivity">Productivity</button>
+                    <button class="nav-btn" data-section="finances">Finances</button>
+                    <button class="nav-btn" data-section="portfolio">Portfolio</button>
+                </nav>
+                <div class="header-controls">
+                    <button id="theme-toggle" class="theme-toggle" title="Toggle theme">
+                        <span class="theme-icon">🌙</span>
+                    </button>
+                    <button id="logout-btn" class="logout-btn" title="Logout">
+                        <span>🚪</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section active">
+                <div class="container">
+                    <div class="welcome-card">
+                        <h1 id="welcome-greeting">Good morning!</h1>
+                        <div class="date-time">
+                            <div id="current-date" class="current-date"></div>
+                            <div id="current-time" class="current-time"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="motivation-card">
+                        <h3>Daily Motivation</h3>
+                        <blockquote id="motivation-quote" class="motivation-quote">
+                            "Success is not final, failure is not fatal: it is the courage to continue that counts."
+                        </blockquote>
+                        <cite id="motivation-author" class="motivation-author">- Winston Churchill</cite>
+                        <button id="new-quote-btn" class="btn-secondary">New Quote</button>
+                    </div>
+
+                    <div class="quick-links">
+                        <h3>Quick Access</h3>
+                        <div class="quick-links-grid">
+                            <button class="quick-link" data-section="productivity" data-tool="pomodoro">
+                                <span class="quick-link-icon">🍅</span>
+                                <span>Pomodoro</span>
+                            </button>
+                            <button class="quick-link" data-section="productivity" data-tool="tasks">
+                                <span class="quick-link-icon">✅</span>
+                                <span>Tasks</span>
+                            </button>
+                            <button class="quick-link" data-section="finances" data-tool="calculator">
+                                <span class="quick-link-icon">💰</span>
+                                <span>Calculator</span>
+                            </button>
+                            <button class="quick-link" data-section="productivity" data-tool="notes">
+                                <span class="quick-link-icon">📝</span>
+                                <span>Notes</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-stats">
+                        <div class="stat-card">
+                            <h4>Today's Tasks</h4>
+                            <div id="tasks-count" class="stat-number">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>Pomodoro Sessions</h4>
+                            <div id="pomodoro-count" class="stat-number">0</div>
+                        </div>
+                        <div class="stat-card">
+                            <h4>This Month's Income</h4>
+                            <div id="monthly-income" class="stat-number">$0</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Productivity Section -->
+            <section id="productivity" class="section">
+                <div class="container">
+                    <div class="productivity-tabs">
+                        <button class="tab-btn active" data-tab="pomodoro">Pomodoro Timer</button>
+                        <button class="tab-btn" data-tab="tasks">Task Planner</button>
+                        <button class="tab-btn" data-tab="sticky-notes">Sticky Notes</button>
+                        <button class="tab-btn" data-tab="notepad">Digital Notepad</button>
+                    </div>
+
+                    <!-- Pomodoro Timer -->
+                    <div id="pomodoro-tab" class="tab-content active">
+                        <div class="pomodoro-container">
+                            <div class="timer-display">
+                                <div id="timer-time" class="timer-time">25:00</div>
+                                <div id="timer-label" class="timer-label">Work Session</div>
+                            </div>
+                            <div class="timer-controls">
+                                <button id="timer-start" class="btn-primary">Start</button>
+                                <button id="timer-pause" class="btn-secondary">Pause</button>
+                                <button id="timer-reset" class="btn-secondary">Reset</button>
+                            </div>
+                            <div class="timer-settings">
+                                <label>Work: <input type="number" id="work-duration" value="25" min="1" max="60"> min</label>
+                                <label>Break: <input type="number" id="break-duration" value="5" min="1" max="30"> min</label>
+                                <label>Long Break: <input type="number" id="long-break-duration" value="15" min="1" max="60"> min</label>
+                            </div>
+                        </div>
+                        <div class="session-logs">
+                            <h3>Today's Sessions</h3>
+                            <div id="session-list" class="session-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Task Planner -->
+                    <div id="tasks-tab" class="tab-content">
+                        <div class="task-input">
+                            <input type="text" id="task-input" placeholder="Add a new task...">
+                            <button id="add-task" class="btn-primary">Add Task</button>
+                        </div>
+                        <div class="task-filters">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="pending">Pending</button>
+                            <button class="filter-btn" data-filter="completed">Completed</button>
+                        </div>
+                        <div id="task-list" class="task-list"></div>
+                        <div class="task-actions">
+                            <button id="export-tasks" class="btn-secondary">Export Tasks</button>
+                            <button id="clear-completed" class="btn-secondary">Clear Completed</button>
+                        </div>
+                    </div>
+
+                    <!-- Sticky Notes -->
+                    <div id="sticky-notes-tab" class="tab-content">
+                        <div class="sticky-controls">
+                            <button id="add-sticky" class="btn-primary">+ New Sticky Note</button>
+                            <button id="clear-stickies" class="btn-secondary">Clear All</button>
+                        </div>
+                        <div id="sticky-container" class="sticky-container"></div>
+                    </div>
+
+                    <!-- Digital Notepad -->
+                    <div id="notepad-tab" class="tab-content">
+                        <div class="notepad-controls">
+                            <input type="text" id="note-title" placeholder="Note title..." class="note-title">
+                            <div class="notepad-actions">
+                                <button id="save-note" class="btn-primary">Save</button>
+                                <button id="export-txt" class="btn-secondary">Export as TXT</button>
+                                <button id="export-pdf" class="btn-secondary">Export as PDF</button>
+                                <button id="clear-notepad" class="btn-secondary">Clear</button>
+                            </div>
+                        </div>
+                        <textarea id="notepad-content" class="notepad-content" placeholder="Start writing your notes here..."></textarea>
+                        <div class="saved-notes">
+                            <h3>Saved Notes</h3>
+                            <div id="saved-notes-list" class="saved-notes-list"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Finances Section -->
+            <section id="finances" class="section">
+                <div class="container">
+                    <div class="finance-tabs">
+                        <button class="tab-btn active" data-tab="calculator">Earnings Calculator</button>
+                        <button class="tab-btn" data-tab="income">Income Tracker</button>
+                        <button class="tab-btn" data-tab="expenses">Expense Tracker</button>
+                    </div>
+
+                    <!-- Earnings Calculator -->
+                    <div id="calculator-tab" class="tab-content active">
+                        <div class="calculator-container">
+                            <div class="calculator-form">
+                                <h3>Project Earnings Calculator</h3>
+                                <div class="form-group">
+                                    <label>Client Name:</label>
+                                    <input type="text" id="client-name" placeholder="Enter client name">
+                                </div>
+                                <div class="form-group">
+                                    <label>Hourly Rate ($):</label>
+                                    <input type="number" id="hourly-rate" placeholder="0.00" step="0.01">
+                                </div>
+                                <div class="form-group">
+                                    <label>Hours Worked:</label>
+                                    <input type="number" id="hours-worked" placeholder="0" step="0.25">
+                                </div>
+                                <div class="form-group">
+                                    <label>Project Description:</label>
+                                    <input type="text" id="project-description" placeholder="Brief description">
+                                </div>
+                                <div class="calculation-result">
+                                    <div class="total-earnings">
+                                        Total Earnings: $<span id="total-earnings">0.00</span>
+                                    </div>
+                                </div>
+                                <button id="save-calculation" class="btn-primary">Save to Income</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Income Tracker -->
+                    <div id="income-tab" class="tab-content">
+                        <div class="income-summary">
+                            <h3>Monthly Income Summary</h3>
+                            <div class="income-stats">
+                                <div class="income-stat">
+                                    <label>This Month:</label>
+                                    <span id="current-month-income">$0.00</span>
+                                </div>
+                                <div class="income-stat">
+                                    <label>Last Month:</label>
+                                    <span id="last-month-income">$0.00</span>
+                                </div>
+                                <div class="income-stat">
+                                    <label>Total:</label>
+                                    <span id="total-income">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-list">
+                            <h3>Income Records</h3>
+                            <div id="income-records" class="income-records"></div>
+                        </div>
+                    </div>
+
+                    <!-- Expense Tracker -->
+                    <div id="expenses-tab" class="tab-content">
+                        <div class="expense-form">
+                            <h3>Add Expense</h3>
+                            <div class="form-row">
+                                <input type="text" id="expense-description" placeholder="Description">
+                                <input type="number" id="expense-amount" placeholder="Amount" step="0.01">
+                                <select id="expense-category">
+                                    <option value="office">Office Supplies</option>
+                                    <option value="software">Software</option>
+                                    <option value="equipment">Equipment</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="travel">Travel</option>
+                                    <option value="other">Other</option>
+                                </select>
+                                <button id="add-expense" class="btn-primary">Add</button>
+                            </div>
+                        </div>
+                        <div class="expense-summary">
+                            <h3>Monthly Expenses</h3>
+                            <div class="expense-chart" id="expense-chart"></div>
+                            <div class="expense-total">
+                                Total: $<span id="total-expenses">0.00</span>
+                            </div>
+                        </div>
+                        <div class="expense-list">
+                            <h3>Recent Expenses</h3>
+                            <div id="expense-records" class="expense-records"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section id="portfolio" class="section">
+                <div class="container">
+                    <div class="portfolio-tabs">
+                        <button class="tab-btn active" data-tab="resume">Resume</button>
+                        <button class="tab-btn" data-tab="projects">Projects</button>
+                    </div>
+
+                    <!-- Resume Tab -->
+                    <div id="resume-tab" class="tab-content active">
+                        <div class="resume-container">
+                            <h3>Resume Management</h3>
+                            <div class="resume-upload">
+                                <input type="file" id="resume-upload" accept=".pdf" style="display: none;">
+                                <button id="upload-resume-btn" class="btn-primary">Upload Resume (PDF)</button>
+                                <div id="resume-status" class="resume-status"></div>
+                            </div>
+                            <div id="resume-preview" class="resume-preview"></div>
+                        </div>
+                    </div>
+
+                    <!-- Projects Tab -->
+                    <div id="projects-tab" class="tab-content">
+                        <div class="project-form">
+                            <h3>Add Project</h3>
+                            <div class="form-group">
+                                <input type="text" id="project-title" placeholder="Project Title">
+                            </div>
+                            <div class="form-group">
+                                <textarea id="project-description" placeholder="Project Description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input type="url" id="project-link" placeholder="Project Link (optional)">
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="project-technologies" placeholder="Technologies used (comma separated)">
+                            </div>
+                            <button id="add-project" class="btn-primary">Add Project</button>
+                        </div>
+                        <div class="projects-showcase">
+                            <h3>My Projects</h3>
+                            <div id="projects-grid" class="projects-grid"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>
