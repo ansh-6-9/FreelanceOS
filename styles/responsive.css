@@ -9,10 +9,38 @@
     
     .header {
         padding: var(--spacing-sm) var(--spacing-md);
+        backdrop-filter: blur(20px);
     }
     
     .app-title {
         font-size: var(--font-size-lg);
+        letter-spacing: -0.01em;
+    }
+    
+    /* Enhanced mobile navigation */
+    .navigation {
+        padding: 0 var(--spacing-md);
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .nav-list {
+        gap: var(--spacing-lg);
+        padding-bottom: var(--spacing-sm);
+    }
+    
+    .nav-link {
+        padding: var(--spacing-md) var(--spacing-sm);
+        white-space: nowrap;
+        font-size: var(--font-size-sm);
+        border-radius: var(--radius-lg);
+        transition: all var(--transition-normal);
+    }
+    
+    .nav-link:hover,
+    .nav-link.active {
+        background: var(--primary-light);
+        color: var(--primary-color);
     }
     
     .navigation {

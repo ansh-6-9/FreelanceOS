@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://freelanceos.com/sitemap.xml
+
+# Disallow admin and private areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+
+# Allow important files
+Allow: /index.html
+Allow: /manifest.json
+Allow: /assets/
+Allow: /styles/
+Allow: /js/
+
+# Crawl delay
+Crawl-delay: 1
