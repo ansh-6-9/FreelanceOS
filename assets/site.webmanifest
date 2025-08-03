@@ -1,0 +1,117 @@
+{
+    "name": "FreelanceOS - Complete Freelance Workspace",
+    "short_name": "FreelanceOS",
+    "description": "The ultimate productivity platform for freelancers. Manage tasks, track finances, use Pomodoro timer, organize projects, and showcase your portfolio - all in one powerful workspace.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#6366f1",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": ["productivity", "business", "finance", "utilities"],
+    "icons": [
+        {
+            "src": "/assets/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/assets/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/assets/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Dashboard",
+            "short_name": "Dashboard",
+            "description": "View your freelance dashboard",
+            "url": "/#dashboard",
+            "icons": [
+                {
+                    "src": "/assets/dashboard-icon.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Pomodoro Timer",
+            "short_name": "Timer",
+            "description": "Start a Pomodoro work session",
+            "url": "/#productivity",
+            "icons": [
+                {
+                    "src": "/assets/timer-icon.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Finances",
+            "short_name": "Finances",
+            "description": "Track your earnings and expenses",
+            "url": "/#finances",
+            "icons": [
+                {
+                    "src": "/assets/finance-icon.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        },
+        {
+            "name": "Portfolio",
+            "short_name": "Portfolio",
+            "description": "Manage your portfolio and projects",
+            "url": "/#portfolio",
+            "icons": [
+                {
+                    "src": "/assets/portfolio-icon.png",
+                    "sizes": "96x96",
+                    "type": "image/png"
+                }
+            ]
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/assets/screenshot-desktop.jpg",
+            "sizes": "1280x720",
+            "type": "image/jpeg",
+            "platform": "wide",
+            "label": "FreelanceOS Desktop View"
+        },
+        {
+            "src": "/assets/screenshot-mobile.jpg",
+            "sizes": "390x844",
+            "type": "image/jpeg",
+            "platform": "narrow",
+            "label": "FreelanceOS Mobile View"
+        }
+    ],
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "edge_side_panel": {
+        "preferred_width": 400
+    }
+}

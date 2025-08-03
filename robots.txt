@@ -1,0 +1,25 @@
+User-agent: *
+Allow: /
+
+# Main sitemap
+Sitemap: https://freelanceos.app/sitemap.xml
+
+# Allow crawling of main sections
+Allow: /#dashboard
+Allow: /#productivity
+Allow: /#finances
+Allow: /#portfolio
+
+# Disallow crawling of assets and configuration files
+Disallow: /assets/
+Disallow: /.git/
+Disallow: /.gitignore
+Disallow: /package.json
+Disallow: /node_modules/
+
+# Crawl delay (be nice to servers)
+Crawl-delay: 1
+
+# Additional information
+# Website: FreelanceOS - Complete Freelance Workspace
+# Contact: admin@freelanceos.app
