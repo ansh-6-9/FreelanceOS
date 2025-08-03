@@ -2,25 +2,60 @@
 .welcome-card {
     text-align: center;
     padding: var(--spacing-2xl);
+    background: var(--gradient-primary);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-radius: var(--radius-2xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.welcome-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 .welcome-card h2 {
-    font-size: var(--font-size-3xl);
+    font-size: var(--font-size-4xl);
     margin-bottom: var(--spacing-sm);
-    color: var(--primary-color);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 800;
+    position: relative;
+    z-index: 1;
 }
 
 #datetime {
-    font-size: var(--font-size-lg);
+    font-size: var(--font-size-xl);
     color: var(--text-secondary);
     margin-bottom: var(--spacing-lg);
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
 }
 
 .quote-container {
-    background-color: var(--surface-color);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: var(--spacing-xl);
+    border-radius: var(--radius-xl);
     border-left: 4px solid var(--primary-color);
+    position: relative;
+    z-index: 1;
+    box-shadow: var(--glass-shadow);
 }
 
 #motivational-quote {
@@ -28,60 +63,129 @@
     font-size: var(--font-size-lg);
     margin-bottom: var(--spacing-sm);
     color: var(--text-primary);
+    line-height: 1.6;
 }
 
 #quote-author {
     color: var(--text-secondary);
-    font-weight: 500;
+    font-weight: 600;
+    font-size: var(--font-size-sm);
 }
 
 .quick-links h3 {
     margin-bottom: var(--spacing-lg);
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .quick-links-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
 }
 
 .quick-link {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: var(--spacing-lg);
-    background-color: var(--surface-color);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all var(--transition-bounce);
     text-decoration: none;
     color: var(--text-primary);
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--glass-shadow);
+}
+
+.quick-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    z-index: 0;
 }
 
 .quick-link:hover {
-    background-color: var(--card-color);
+    background: var(--glass-bg);
     border-color: var(--primary-color);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px var(--shadow-color);
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 20px 40px var(--shadow-xl);
+}
+
+.quick-link:hover::before {
+    opacity: 0.1;
 }
 
 .quick-link-icon {
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--spacing-sm);
+    font-size: var(--font-size-3xl);
+    margin-bottom: var(--spacing-md);
+    position: relative;
+    z-index: 1;
+    transition: transform var(--transition-bounce);
+}
+
+.quick-link:hover .quick-link-icon {
+    transform: scale(1.1);
+}
+
+.quick-link span:last-child {
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
 }
 
 /* Pomodoro Timer */
 .pomodoro-card {
     text-align: center;
+    position: relative;
+}
+
+.pomodoro-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
 }
 
 .timer-display {
-    font-size: 4rem;
-    font-weight: 700;
-    color: var(--primary-color);
+    font-size: 5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
     margin: var(--spacing-xl) 0;
-    font-family: 'Courier New', monospace;
+    font-family: 'Inter', monospace;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 4px 8px rgba(99, 102, 241, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 .timer-controls {
@@ -89,13 +193,17 @@
     gap: var(--spacing-md);
     justify-content: center;
     margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
 }
 
 .timer-settings {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-md);
+    gap: var(--spacing-lg);
     margin-bottom: var(--spacing-xl);
+    position: relative;
+    z-index: 1;
 }
 
 .timer-settings label {
@@ -134,10 +242,25 @@
     display: flex;
     gap: var(--spacing-md);
     margin-bottom: var(--spacing-lg);
+    position: relative;
 }
 
 .task-input input {
     flex: 1;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-md) var(--spacing-lg);
+    font-size: var(--font-size-base);
+    transition: all var(--transition-bounce);
+}
+
+.task-input input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+    transform: translateY(-1px);
 }
 
 .task-list {
@@ -153,22 +276,45 @@
 .task-item {
     display: flex;
     align-items: center;
-    padding: var(--spacing-md);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    margin-bottom: var(--spacing-sm);
-    background-color: var(--surface-color);
-    transition: all var(--transition-fast);
+    padding: var(--spacing-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    margin-bottom: var(--spacing-md);
+    transition: all var(--transition-bounce);
+    position: relative;
+    overflow: hidden;
+}
+
+.task-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
 }
 
 .task-item:hover {
-    background-color: var(--card-color);
+    background: var(--glass-bg);
     border-color: var(--primary-color);
+    transform: translateX(4px);
+    box-shadow: 0 8px 25px var(--shadow-lg);
+}
+
+.task-item:hover::before {
+    opacity: 1;
 }
 
 .task-item.completed {
-    opacity: 0.6;
-    background-color: var(--surface-color);
+    opacity: 0.7;
+    background: var(--success-light);
+    border-color: var(--success-color);
 }
 
 .task-item.completed .task-text {
@@ -178,14 +324,22 @@
 
 .task-checkbox {
     margin-right: var(--spacing-md);
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     accent-color: var(--primary-color);
+    cursor: pointer;
+    transition: transform var(--transition-bounce);
+}
+
+.task-checkbox:hover {
+    transform: scale(1.1);
 }
 
 .task-text {
     flex: 1;
-    font-size: var(--font-size-sm);
+    font-weight: 500;
+    font-size: var(--font-size-base);
+    line-height: 1.5;
 }
 
 .task-actions {
