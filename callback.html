@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OAuth Callback</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+    }
+    .box {
+      background: #f3f3f3;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 40px;
+    }
+    .token {
+      word-break: break-all;
+      font-family: monospace;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔐 OAuth Callback Received</h1>
+  <div class="box" id="responseBox">Processing...</div>
+
+  <script>
+    function parseOAuthResponse() {
+      const params = new URLSearchParams(window.location.search);
+      const hash = new URLSearchParams(window.location.hash.slice(1)); // in case access token comes via fragment
+
+      const code = params.get("code");
+      const error = params.get("error");
+      const accessToken = hash.get("access_token");
+
+      const box = document.getElementById("responseBox");
+
+      if (code) {
+        box.innerHTML = `<p>✅ Authorization Code:</p><div class="token">${code}</div>`;
+        // TODO: Send this code to your backend to exchange for access token
+      } else if (accessToken) {
+        box.innerHTML = `<p>✅ Access Token:</p><div class="token">${accessToken}</div>`;
+        // Use this token for API calls (if using implicit grant flow)
+      } else if (error) {
+        box.innerHTML = `<p>❌ Error: <strong>${error}</strong></p>`;
+      } else {
+        box.innerHTML = `<p>⚠️ No valid OAuth response found.</p>`;
+      }
+    }
+
+    parseOAuthResponse();
+  </script>
+</body>
+</html>
