@@ -229,21 +229,69 @@ class PaymentTracker {
     }
 
     handleIntegrationClick(platform, button) {
-        // Visual feedback for integration buttons
+        // Check if OAuth integration is available
+        if (!window.oauthIntegration) {
+            console.error('OAuth integration not initialized');
+            this.showNotification('OAuth integration not available', 'error');
+            return;
+        }
+
+        const isConnected = window.oauthIntegration.isConnected(platform);
+        
+        if (isConnected) {
+            // If already connected, show disconnect option
+            this.showDisconnectConfirmation(platform, button);
+        } else {
+            // Initiate OAuth flow
+            this.initiateOAuthConnection(platform, button);
+        }
+    }
+
+    /**
+     * Show confirmation dialog for disconnecting a platform
+     * @param {string} platform - Platform identifier
+     * @param {HTMLElement} button - Button element
+     */
+    showDisconnectConfirmation(platform, button) {
+        const platformName = window.oauthIntegration.oauthConfig[platform].name;
+        
+        if (confirm(`Are you sure you want to disconnect from ${platformName}? This will stop automatic payment syncing.`)) {
+            // Visual feedback
+            const originalText = button.innerHTML;
+            button.innerHTML = `<span class="integration-icon">⏳</span>Disconnecting...`;
+            button.disabled = true;
+
+            // Simulate disconnect delay for better UX
+            setTimeout(() => {
+                window.oauthIntegration.disconnect(platform);
+                // Status will be updated automatically by the OAuth integration
+            }, 800);
+        }
+    }
+
+    /**
+     * Initiate OAuth connection for a platform
+     * @param {string} platform - Platform identifier
+     * @param {HTMLElement} button - Button element
+     */
+    initiateOAuthConnection(platform, button) {
+        // Visual feedback
         const originalText = button.innerHTML;
         button.innerHTML = `<span class="integration-icon">⏳</span>Connecting...`;
         button.disabled = true;
 
+        // Small delay for better UX before redirect
         setTimeout(() => {
-            button.innerHTML = `<span class="integration-icon">❌</span>Coming Soon`;
+            const success = window.oauthIntegration.initiateOAuth(platform);
             
-            setTimeout(() => {
+            if (!success) {
+                // Restore button if OAuth initiation failed
                 button.innerHTML = originalText;
                 button.disabled = false;
-            }, 2000);
-        }, 1500);
-
-        this.showNotification(`${this.capitalizeFirst(platform)} integration is coming soon!`, 'info');
+                this.showNotification(`Failed to initiate ${platform} connection`, 'error');
+            }
+            // If successful, user will be redirected to OAuth provider
+        }, 500);
     }
 
     clearForm() {
