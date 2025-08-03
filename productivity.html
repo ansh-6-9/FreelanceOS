@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreelanceOS – Productivity</title>
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo">FreelanceOS</h1>
+    <nav class="nav">
+      <a href="index.html">Dashboard</a>
+      <a href="productivity.html" class="active">Productivity</a>
+      <a href="finance.html">Finances</a>
+      <a href="portfolio.html">Portfolio</a>
+    </nav>
+    <button id="darkToggle" aria-label="Toggle dark mode">🌙</button>
+  </header>
+
+  <main>
+    <section id="pomodoro" class="card">
+      <h2>Pomodoro Timer</h2>
+      <div class="timer-display" id="timerDisplay">25:00</div>
+      <div class="timer-controls">
+        <button id="startPomodoro">Start</button>
+        <button id="stopPomodoro">Stop</button>
+        <button id="resetPomodoro">Reset</button>
+      </div>
+      <h3>Session Logs</h3>
+      <ul id="pomodoroLogs" class="logs"></ul>
+    </section>
+
+    <section id="tasks" class="card">
+      <h2>Daily Task Planner</h2>
+      <form id="taskForm">
+        <input type="text" id="taskInput" placeholder="New Task" required />
+        <button type="submit">Add</button>
+      </form>
+      <ul id="taskList" class="task-list"></ul>
+    </section>
+
+    <section id="stickies" class="card">
+      <h2>Sticky Notes</h2>
+      <button id="addSticky">Add Note</button>
+      <div id="stickyContainer" class="sticky-container"></div>
+    </section>
+
+    <section id="notepad" class="card">
+      <h2>Digital Notepad</h2>
+      <textarea id="notepadArea" rows="10" placeholder="Write your notes here..."></textarea>
+      <div class="notepad-controls">
+        <button id="saveNote">Save</button>
+        <button id="exportNote">Export .txt</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <small>&copy; <span id="year"></span> FreelanceOS</small>
+  </footer>
+
+  <script src="js/common.js"></script>
+  <script src="js/pomodoro.js"></script>
+  <script src="js/tasks.js"></script>
+  <script src="js/sticky.js"></script>
+  <script src="js/notepad.js"></script>
+</body>
+</html>
