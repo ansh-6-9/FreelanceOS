@@ -1,0 +1,248 @@
+/*
+  styles/tokens.css
+  Phase 1 - Design Tokens Foundation
+
+  Purpose:
+  - Provide a centralized, semantic token layer for colors, typography, spacing,
+    radii, shadows, motion, z-index and opacity.
+  - Non-breaking compatibility: tokens reference existing variables (from
+    styles/main.css) where possible using `var(--old-var, <fallback>)` so the
+    visual result remains identical while code begins consuming semantic names.
+
+  Integration notes:
+  - This file is intended to be imported at the top of styles/main.css via
+    `@import './tokens.css';` which allows existing variables in main.css to
+    resolve at runtime (CSS custom property resolution is dynamic).
+  - Do NOT change component styles in this phase. Tokens only provide a
+    canonical naming layer and safe fallbacks to the current values.
+
+  Implementation rules:
+  - Token names use semantic prefixes: --color-*, --type-*, --space-*,
+    --radius-*, --elevation-*, --motion-*, --z-*, --opacity-*
+  - Each semantic token attempts to derive its value from the project's
+    existing variable where present, with an explicit fallback that equals the
+    current value found in styles/main.css. This keeps behavior visually
+    identical if the existing variable is not yet defined or later changed.
+*/
+
+:root {
+  /* -----------------------------
+     COLOR TOKENS (dark-first)
+     ----------------------------- */
+
+  /* Page & surfaces */
+  --color-bg: var(--background-color, #ffffff);
+  --color-bg-secondary: var(--background-secondary, #f8fafc);
+  --color-surface: var(--surface-color, #f1f5f9);
+  --color-surface-elevated: var(--surface-elevated, #ffffff);
+  --color-card: var(--card-color, #ffffff);
+  --color-overlay: rgba(0, 0, 0, 0.6);
+
+  /* Brand / accent */
+  --color-primary: var(--primary-color, #6366f1);
+  --color-primary-hover: var(--primary-hover, #5855eb);
+  --color-primary-weak: var(--primary-light, #a5b4fc);
+  --color-accent: var(--accent-color, #f59e0b);
+
+  /* Text */
+  --color-text-primary: var(--text-primary, #0f172a);
+  --color-text-secondary: var(--text-secondary, #475569);
+  --color-text-muted: var(--text-muted, #64748b);
+  --color-text-inverse: var(--text-inverse, #ffffff);
+
+  /* Borders & dividers */
+  --color-border: var(--border-color, #e2e8f0);
+  --color-divider: var(--border-color, #e2e8f0);
+
+  /* Feedback */
+  --color-success: var(--success-color, #10b981);
+  --color-success-bg: rgba(16, 185, 129, 0.12);
+  --color-warning: var(--warning-color, #f59e0b);
+  --color-warning-bg: rgba(245, 158, 11, 0.12);
+  --color-danger: var(--error-color, #ef4444);
+  --color-danger-bg: rgba(239, 68, 68, 0.12);
+  --color-info: var(--info-color, #3b82f6);
+  --color-info-bg: rgba(59, 130, 246, 0.08);
+
+  --color-disabled: var(--color-disabled, #62666D);
+
+  /* Chart / badge palette (examples) */
+  --color-chart-1: #2563EB;
+  --color-chart-2: #14B8A6;
+  --color-chart-3: #F59E0B;
+  --color-chart-4: #10B981;
+  --color-chart-5: #EF4444;
+  --color-chart-6: #7C3AED;
+
+  /* -----------------------------
+     TYPOGRAPHY TOKENS
+     ----------------------------- */
+  --type-font-family-sans: var(--font-family, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
+  --type-font-family-mono: var(--font-mono, 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace);
+
+  /* Scale (based on existing variables in styles/main.css) */
+  --type-display-large: var(--font-size-5xl, 3rem);
+  --type-display-medium: var(--font-size-4xl, 2.25rem);
+  --type-h1: var(--font-size-3xl, 1.875rem);
+  --type-h2: var(--font-size-2xl, 1.5rem);
+  --type-h3: var(--font-size-xl, 1.25rem);
+  --type-body-large: var(--font-size-lg, 1.125rem);
+  --type-body: var(--font-size-base, 1rem);
+  --type-body-small: var(--font-size-sm, 0.875rem);
+  --type-caption: var(--font-size-xs, 0.8rem);
+
+  --type-line-height-tight: var(--line-height-tight, 1.25);
+  --type-line-height-base: var(--line-height-normal, 1.5);
+  --type-line-height-relaxed: var(--line-height-relaxed, 1.625);
+
+  --type-weight-regular: var(--font-weight-normal, 400);
+  --type-weight-medium: var(--font-weight-medium, 500);
+  --type-weight-semibold: var(--font-weight-semibold, 600);
+  --type-weight-bold: var(--font-weight-bold, 700);
+
+  /* -----------------------------
+     SPACING SYSTEM (8px baseline)
+     ----------------------------- */
+  --space-0: var(--spacing-0, 0);
+  --space-1: var(--spacing-1, 0.25rem); /* 4px */
+  --space-2: var(--spacing-2, 0.5rem);  /* 8px */
+  --space-3: var(--spacing-3, 0.75rem); /* 12px */
+  --space-4: var(--spacing-4, 1rem);    /* 16px */
+  --space-5: var(--spacing-5, 1.25rem); /* 20px */
+  --space-6: var(--spacing-6, 1.5rem);  /* 24px */
+  --space-8: var(--spacing-8, 2rem);    /* 32px */
+  --space-10: var(--spacing-10, 2.5rem);/* 40px */
+  --space-12: var(--spacing-12, 3rem);  /* 48px */
+  --space-16: var(--spacing-16, 4rem);  /* 64px */
+
+  /* -----------------------------
+     BORDER RADIUS
+     ----------------------------- */
+  --radius-none: var(--radius-none, 0);
+  --radius-sm: var(--radius-sm, 0.125rem);
+  --radius-base: var(--radius-base, 0.25rem);
+  --radius-md: var(--radius-md, 0.375rem);
+  --radius-lg: var(--radius-lg, 0.5rem);
+  --radius-xl: var(--radius-xl, 0.75rem);
+  --radius-2xl: var(--radius-2xl, 1rem);
+  --radius-full: var(--radius-full, 9999px);
+
+  /* -----------------------------
+     SHADOW / ELEVATION (semantic)
+     ----------------------------- */
+  --elevation-0: none;
+  --elevation-1: var(--shadow-xs, 0 1px 2px rgba(0,0,0,0.05));
+  --elevation-2: var(--shadow-sm, 0 1px 3px rgba(0,0,0,0.1));
+  --elevation-3: var(--shadow-md, 0 4px 6px rgba(0,0,0,0.1));
+  --elevation-4: var(--shadow-lg, 0 10px 15px rgba(0,0,0,0.12));
+  --elevation-5: var(--shadow-xl, 0 20px 25px rgba(0,0,0,0.14));
+
+  /* Optional colored glow using primary; keep subtle */
+  --elevation-primary-glow: var(--shadow-colored, 0 8px 32px rgba(99,102,241,0.3));
+
+  /* -----------------------------
+     MOTION & TRANSITION
+     ----------------------------- */
+  --motion-duration-fast: 100ms;
+  --motion-duration-normal: 300ms;
+  --motion-duration-slow: 500ms;
+  --motion-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --motion-ease-in: cubic-bezier(0.2, 0, 0, 1);
+  --motion-bounce: cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+  --transition-fast: all var(--motion-duration-fast) var(--motion-ease);
+  --transition-normal: all var(--motion-duration-normal) var(--motion-ease);
+
+  /* -----------------------------
+     Z-INDEX SCALE
+     ----------------------------- */
+  --z-dropdown: var(--z-dropdown, 1000);
+  --z-sticky: var(--z-sticky, 1020);
+  --z-fixed: var(--z-fixed, 1030);
+  --z-modal-backdrop: var(--z-modal-backdrop, 1040);
+  --z-modal: var(--z-modal, 1050);
+  --z-popover: var(--z-popover, 1060);
+  --z-tooltip: var(--z-tooltip, 1070);
+  --z-toast: var(--z-toast, 1080);
+
+  /* -----------------------------
+     OPACITY TOKENS
+     ----------------------------- */
+  --opacity-strong: 1;
+  --opacity-medium: 0.8;
+  --opacity-muted: 0.6;
+  --opacity-faint: 0.3;
+
+  /* -----------------------------
+     LEGACY COMPATIBILITY LAYER
+     Map legacy variables to semantic tokens so older CSS keeps working.
+     These are intentionally set via `var(--token, fallback)` semantics so
+     existing usage continues to resolve correctly. Do not rely on the
+     compatibility names for new code — use semantic tokens above.
+     ----------------------------- */
+  /* Color compatibility (legacy -> semantic) */
+  --primary-color: var(--color-primary, #6366f1);
+  --primary-hover: var(--color-primary-hover, #5855eb);
+  --primary-light: var(--color-primary-weak, #a5b4fc);
+
+  --background-color: var(--color-bg, #ffffff);
+  --background-secondary: var(--color-bg-secondary, #f8fafc);
+  --surface-color: var(--color-surface, #f1f5f9);
+  --surface-elevated: var(--color-surface-elevated, #ffffff);
+  --card-color: var(--color-card, #ffffff);
+
+  --text-primary: var(--color-text-primary, #0f172a);
+  --text-secondary: var(--color-text-secondary, #475569);
+  --text-muted: var(--color-text-muted, #64748b);
+  --text-inverse: var(--color-text-inverse, #ffffff);
+
+  --border-color: var(--color-border, #e2e8f0);
+
+  /* Spacing compatibility */
+  --spacing-0: var(--space-0, 0);
+  --spacing-1: var(--space-1, 0.25rem);
+  --spacing-2: var(--space-2, 0.5rem);
+  --spacing-3: var(--space-3, 0.75rem);
+  --spacing-4: var(--space-4, 1rem);
+  --spacing-6: var(--space-6, 1.5rem);
+  --spacing-8: var(--space-8, 2rem);
+  --spacing-10: var(--space-10, 2.5rem);
+  --spacing-12: var(--space-12, 3rem);
+
+  /* Radius compatibility */
+  --radius-sm: var(--radius-sm, 0.125rem);
+  --radius-base: var(--radius-base, 0.25rem);
+  --radius-lg: var(--radius-lg, 0.5rem);
+  --radius-2xl: var(--radius-2xl, 1rem);
+  --radius-full: var(--radius-full, 9999px);
+
+  /* Shadow compatibility */
+  --shadow-xs: var(--elevation-1, 0 1px 2px rgba(0,0,0,0.05));
+  --shadow-sm: var(--elevation-2, 0 1px 3px rgba(0,0,0,0.1));
+  --shadow-md: var(--elevation-3, 0 4px 6px rgba(0,0,0,0.1));
+  --shadow-lg: var(--elevation-4, 0 10px 15px rgba(0,0,0,0.12));
+  --shadow-xl: var(--elevation-5, 0 20px 25px rgba(0,0,0,0.14));
+
+  /* Motion compatibility */
+  --transition-all: var(--transition-normal);
+  --duration-100: var(--motion-duration-fast);
+  --duration-300: var(--motion-duration-normal);
+}
+
+/* Dark theme mapping: prefer semantic tokens but allow existing dark vars as fallback */
+[data-theme="dark"] {
+  --color-bg: var(--background-color, #0f172a);
+  --color-bg-secondary: var(--background-secondary, #1e293b);
+  --color-surface: var(--surface-color, #1e293b);
+  --color-surface-elevated: var(--surface-elevated, #334155);
+  --color-card: var(--card-color, #334155);
+
+  --color-text-primary: var(--text-primary, #f1f5f9);
+  --color-text-secondary: var(--text-secondary, #cbd5e1);
+  --color-text-muted: var(--text-muted, #64748b);
+
+  --color-border: var(--border-color, #475569);
+
+  /* Keep primary brand consistent */
+  --color-primary: var(--primary-color, #6366f1);
+}
